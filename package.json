@@ -1,0 +1,16 @@
+{
+  "name": "clickity-click-tests",
+  "version": "1.0.0",
+  "description": "Automated tests for a qa task",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Aiste Laugalyte",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^4.3.6",
+    "mocha": "^9.2.2",
+    "puppeteer": "^13.7.0"
+  }
+}
