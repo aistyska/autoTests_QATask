@@ -4,7 +4,7 @@
   "description": "Automated tests for a qa task",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha --timeout=30000 ./tests"
   },
   "author": "Aiste Laugalyte",
   "license": "ISC",
