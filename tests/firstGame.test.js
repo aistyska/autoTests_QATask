@@ -23,12 +23,12 @@ describe("Play game for the first time. Grid size 4x4", () => {
         const headerText = await header.evaluate(element => element.textContent);
         assert.equal(headerText, "Play it is fun !!!");
 
-        const iconsInFirstLine = await page.$$("div.mainGrid div.row:first-of-type > div:nth-child(-n+4)");
+        const iconsInFirstLine = await page.$$("div.mainGrid div.row:first-of-type > div.icon");
         for (let index = 0; index < iconsInFirstLine.length; index++) {
             await iconsInFirstLine[index].click();
         }
      
-        const iconsInLastLine = await page.$$("div.mainGrid div.row:last-of-type > div:nth-child(-n+4)");
+        const iconsInLastLine = await page.$$("div.mainGrid div.row:last-of-type > div.icon");
         for (let index = 0; index < iconsInLastLine.length; index++) {
             await iconsInLastLine[index].click();
         }

@@ -14,8 +14,8 @@ describe("Play game. Click icons in outer perimeter", () => {
         {"size": "9", "clicked": 31}
     ];
     let index = 0;
-    let selectorFirstRow;
-    let selectorLastRow;
+    const selectorFirstRow = "div.mainGrid div.row:first-of-type > div.icon";
+    const selectorLastRow = "div.mainGrid div.row:last-of-type > div.icon";
     const selectorFirstIcon2ndLine = "div.mainGrid div.row:nth-of-type(2) div:first-child";
     const selectorLastIcon2ndLine = "div.mainGrid div.row:nth-of-type(2) div:nth-last-child(2)";
     const selectorFirstIcon3rdLine = "div.mainGrid div.row:nth-of-type(3) div:first-child";
@@ -39,8 +39,6 @@ describe("Play game. Click icons in outer perimeter", () => {
 
     beforeEach("Open the game", async function(){
         await page.goto(`${APPLICATION_PATH}?width=${grids[index].size}&height=${grids[index].size}`);
-        selectorFirstRow = `div.mainGrid div.row:first-of-type > div:nth-child(-n+${grids[index].size})`;
-        selectorLastRow = `div.mainGrid div.row:last-of-type > div:nth-child(-n+${grids[index].size})`
     });
 
     it("All icons in outer peremeter can be clicked when grid size is 3", async function() {

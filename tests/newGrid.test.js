@@ -27,13 +27,13 @@ describe("New grid after prompt", () => {
             await dialog.accept(grids[index].size);
         });
 
-        await page.waitForSelector("div.mainGrid div.row:first-of-type > div:nth-child(-n+4)");
-        const iconsInFirstLine = await page.$$("div.mainGrid div.row:first-of-type > div:nth-child(-n+4)");
+        await page.waitForSelector("div.mainGrid div.row:first-of-type > div.icon");
+        const iconsInFirstLine = await page.$$("div.mainGrid div.row:first-of-type > div.icon");
         for (let index = 0; index < iconsInFirstLine.length; index++) {
             await iconsInFirstLine[index].click();
         }
     
-        const iconsInLastLine = await page.$$("div.mainGrid div.row:last-of-type > div:nth-child(-n+4)");
+        const iconsInLastLine = await page.$$("div.mainGrid div.row:last-of-type > div.icon");
         for (let index = 0; index < iconsInLastLine.length; index++) {
             await iconsInLastLine[index].click();
         }
@@ -65,7 +65,7 @@ describe("New grid after prompt", () => {
             const displayedRows = await page.$$("div.mainGrid div.row");
             assert.equal(displayedRows.length, grid.size, "Wrong number of rows is displayed");
 
-            for (let row = 1; row <= 3; row++) {
+            for (let row = 1; row <= grid.size; row++) {
                 let columnsInRow = await page.$$(`div.mainGrid div.row:nth-of-type(${row}) div.icon`);
                 assert.equal(columnsInRow.length, grid.size, `Wrong number of columns in the ${row} row`)
             };
