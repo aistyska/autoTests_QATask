@@ -1,5 +1,6 @@
-const puppeteer = require('puppeteer');
-const assert = require('chai').assert;
+import puppeteer from 'puppeteer';
+import { assert } from 'chai';
+import {APPLICATION_PATH} from "../utils/utils.js"
 
 describe("Play game for the first time. Grid size 4x4", () => {
     let browser;
@@ -8,7 +9,7 @@ describe("Play game for the first time. Grid size 4x4", () => {
     before("Open the game", async function() {
         browser = await puppeteer.launch({headless: false});
         page = await browser.newPage();
-        await page.goto("file:///C:/Users/aiste/Desktop/qa%20Task/QA%20Task.html");
+        await page.goto(APPLICATION_PATH);
     });
 
     it("Click all icons in the outer perimeter and define size of a new grid", async function() {

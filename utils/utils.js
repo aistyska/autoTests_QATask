@@ -1,0 +1,1 @@
+export const APPLICATION_PATH = "file:///C:/Users/aiste/Desktop/qa%20Task/QA%20Task.html";

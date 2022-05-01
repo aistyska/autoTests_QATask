@@ -1,7 +1,8 @@
-const puppeteer = require('puppeteer');
-const assert = require('chai').assert;
+import puppeteer from 'puppeteer';
+import { assert } from 'chai';
+import {APPLICATION_PATH} from "../utils/utils.js"
 
-describe.only("Play game. Click icons in outer perimeter", () => {
+describe("Play game. Click icons in outer perimeter", () => {
     let browser;
     let page;
     const grids = [
@@ -29,6 +30,7 @@ describe.only("Play game. Click icons in outer perimeter", () => {
     const selectorLastIcon7thLine = "div.mainGrid div.row:nth-of-type(7) div:nth-last-child(2)";
     const selectorFirstIcon8thLine = "div.mainGrid div.row:nth-of-type(8) div:first-child";
     const selectorLastIcon8thLine = "div.mainGrid div.row:nth-of-type(8) div:nth-last-child(2)";
+    const selectorActiveCell = ".mainGrid div[active=true]";
 
     before("Launch browser", async function() {
         browser = await puppeteer.launch({headless: false});
@@ -36,7 +38,7 @@ describe.only("Play game. Click icons in outer perimeter", () => {
     });
 
     beforeEach("Open the game", async function(){
-        await page.goto(`file:///C:/Users/aiste/Desktop/qa%20Task/QA%20Task.html?width=${grids[index].size}&height=${grids[index].size}`);
+        await page.goto(`${APPLICATION_PATH}?width=${grids[index].size}&height=${grids[index].size}`);
         selectorFirstRow = `div.mainGrid div.row:first-of-type > div:nth-child(-n+${grids[index].size})`;
         selectorLastRow = `div.mainGrid div.row:last-of-type > div:nth-child(-n+${grids[index].size})`
     });
@@ -60,14 +62,14 @@ describe.only("Play game. Click icons in outer perimeter", () => {
         const firstIconIn2ndLine = await page.$(selectorFirstIcon2ndLine);
         await firstIconIn2ndLine.click();
         
-        let clickedIcons = await page.$$(".mainGrid div[active=true]");
+        let clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, grids[index].clicked);
         
         const lastIconIn2ndLine = await page.$(selectorLastIcon2ndLine);
         await lastIconIn2ndLine.click();
 
         await page.waitForNavigation();
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, 0);
     });
 
@@ -102,14 +104,14 @@ describe.only("Play game. Click icons in outer perimeter", () => {
         const lastIconIn3rdLine = await page.$(selectorLastIcon3rdLine);
         await lastIconIn3rdLine.click();
 
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        let clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, grids[index].clicked);
 
         const lastIconIn4thLine = await page.$(selectorLastIcon4thLine);
         await lastIconIn4thLine.click();
 
         await page.waitForNavigation();
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, 0);
     });
 
@@ -150,14 +152,14 @@ describe.only("Play game. Click icons in outer perimeter", () => {
         const lastIconIn4thLine = await page.$(selectorLastIcon4thLine);
         await lastIconIn4thLine.click();
 
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        let clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, grids[index].clicked);
 
         const lastIconIn5thLine = await page.$(selectorLastIcon5thLine);
         await lastIconIn5thLine.click();
 
         await page.waitForNavigation();
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, 0);
     });
 
@@ -204,14 +206,14 @@ describe.only("Play game. Click icons in outer perimeter", () => {
         const lastIconIn5thLine = await page.$(selectorLastIcon5thLine);
         await lastIconIn5thLine.click();
 
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        let clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, grids[index].clicked);
 
         const lastIconIn6thLine = await page.$(selectorLastIcon6thLine);
         await lastIconIn6thLine.click();
 
         await page.waitForNavigation();
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, 0);
     });
 
@@ -264,14 +266,14 @@ describe.only("Play game. Click icons in outer perimeter", () => {
         const lastIconIn6thLine = await page.$(selectorLastIcon6thLine);
         await lastIconIn6thLine.click();
 
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        let clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, grids[index].clicked);
 
         const lastIconIn7thLine = await page.$(selectorLastIcon7thLine);
         await lastIconIn7thLine.click();
 
         await page.waitForNavigation();
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, 0);
     });
 
@@ -329,14 +331,14 @@ describe.only("Play game. Click icons in outer perimeter", () => {
         const lastIconIn7thLine = await page.$(selectorLastIcon7thLine);
         await lastIconIn7thLine.click();
 
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        let clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, grids[index].clicked);
 
         const lastIconIn8thLine = await page.$(selectorLastIcon8thLine);
         await lastIconIn8thLine.click();
 
         await page.waitForNavigation();
-        clickedIcons = await page.$$(".mainGrid div[active=true]");
+        clickedIcons = await page.$$(selectorActiveCell);
         assert.equal(clickedIcons.length, 0);
     });
 

@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Automated tests for a qa task",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "test": "mocha --timeout=30000 ./tests"
   },

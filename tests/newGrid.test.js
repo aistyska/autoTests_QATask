@@ -1,5 +1,6 @@
-const puppeteer = require('puppeteer');
-const assert = require('chai').assert;
+import puppeteer from 'puppeteer';
+import { assert } from 'chai';
+import {APPLICATION_PATH} from "../utils/utils.js"
 
 describe("New grid after prompt", () => {
     let browser;
@@ -21,7 +22,7 @@ describe("New grid after prompt", () => {
     });
 
     beforeEach("Opent the game and click all icons in outter perimeter to see the promt", async function() {
-        await page.goto("file:///C:/Users/aiste/Desktop/qa%20Task/QA%20Task.html");
+        await page.goto(APPLICATION_PATH);
         page.on('dialog', async dialog => {
             await dialog.accept(grids[index].size);
         });
