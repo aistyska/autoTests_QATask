@@ -57,7 +57,6 @@ describe("Play game for the first time. Grid size 4x4", () => {
         assert.equal(clickedIcons.length, 0);
     });
 
-
     after("Close Browser", async function() {
         await browser.close();
     });
